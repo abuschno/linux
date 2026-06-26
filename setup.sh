@@ -40,6 +40,10 @@ else
     echo "Zsh is already installed."
 fi
 
+# Change the default shell to zsh for the original user
+echo "Setting zsh as the default shell for $ORIGINAL_USER..."
+chsh -s "$(which zsh)" "$ORIGINAL_USER"
+
 # Install Oh My Zsh
 if [ ! -d "$USER_HOME/.oh-my-zsh" ]; then
     echo "Installing Oh My Zsh..."
@@ -90,3 +94,4 @@ fi
 # Reload Zsh to apply the changes for the original user
 echo "Reloading zsh..."
 sudo -u "$ORIGINAL_USER" zsh
+
